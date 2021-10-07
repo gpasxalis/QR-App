@@ -1,7 +1,6 @@
 from flask import Blueprint, render_template, request, url_for, send_file
-import qrcode, os, sys
-import flask
-import io, uuid, base64
+import qrcode, os, sys, io, uuid, base64
+import flask 
 
 
 qr_main = Blueprint('qr_main',__name__)
