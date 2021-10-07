@@ -46,25 +46,16 @@ def download():
 	randomUUID = uuid.uuid1()
 	path = f"myapp/static/images/{randomUUID}.png"
 	
-	temp_data_2 = io.BytesIO()
+	dl_temp = io.BytesIO()
 	img = random_qr(text_input)
 
 	img.save(path)
 	
 	with open(path, 'rb') as png:
-		temp_data_2.write(png.read())
+		dl_temp.write(png.read())
 	
-	temp_data_2.seek(0)
+	dl_temp.seek(0)
 	os.remove(path)
 	
-	return send_file(temp_data_2, as_attachment=True, attachment_filename=f'{randomUUID}.png')
+	return send_file(dl_temp, as_attachment=True, attachment_filename=f'{randomUUID}.png')
 	
-	
-	
-	
-	
-	
-	
-	
-	
-
