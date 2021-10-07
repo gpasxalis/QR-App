@@ -1,7 +1,6 @@
 import os
-
 from flask import Flask
-from flask_elasticsearch import FlaskElasticsearch
+from tempfile import mkdtemp
 
 def create_app():
 
@@ -15,9 +14,11 @@ def create_app():
 
 
 	app = Flask(__name__, static_folder=APP_STATIC_URL ,static_url_path=APP_STATIC_URL)
+	app.config["SESSION_FILE_DIR"] = mkdtemp()
+	app.config["SESSION_PERMANENT"] = False
+	app.config["SESSION_TYPE"] = "filesystem"
 
-	# configure elastic
-	es.init_app(app)
+	
 
 
 
@@ -31,5 +32,4 @@ def create_app():
 	return app
 
 
-es = FlaskElasticsearch()
 app = create_app()
