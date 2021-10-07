@@ -1,7 +1,5 @@
 from flask import Blueprint, render_template, request, url_for, send_file
-import qrcode
-import os
-import sys
+import qrcode, os, sys
 import flask
 import io, uuid, base64
 
